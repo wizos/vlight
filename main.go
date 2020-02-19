@@ -72,7 +72,13 @@ func FetchFund(codes []string) []map[string]string {
 
 		re, _ := regexp.Compile("jsonpgz\\((.*)\\);")
 		ret := re.FindSubmatch([]byte(body))
-		fundData := ret[1]
+		if len(ret)<2 {
+			log.Fatal("Not find content: " + fundJsUrl)
+			return nil
+		}else{
+			fundData := ret[1]
+		}
+		
 
 		doc, err2 := goquery.NewDocumentFromReader(strings.NewReader(body1))
 		if err2 != nil {
