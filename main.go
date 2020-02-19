@@ -72,7 +72,7 @@ func FetchFund(codes []string) []map[string]string {
 
 		re, _ := regexp.Compile("jsonpgz\\((.*)\\);")
 		ret := re.FindSubmatch([]byte(body))
-		var fundData string
+		var fundData
 		if len(ret)<2 {
 			log.Fatal("Not find content: " + fundJsUrl)
 			return nil
