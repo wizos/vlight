@@ -217,7 +217,7 @@ func SendEmail(content string) {
 	m.SetHeader("To", emailName)
 	m.SetHeader("Subject", "基金涨跌监控")
 	m.SetBody("text/html", content)
-	d := gomail.NewDialer("smtp.qq.com", 587, emailName, emailPassword)
+	d := gomail.NewDialer("smtp-mail.outlook.com", 587, emailName, emailPassword)
 	if err := d.DialAndSend(m); err != nil {
 		panic(err)
 	}
